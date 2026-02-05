@@ -342,7 +342,7 @@ def main():
         ("Health Endpoint", tester.test_health_endpoint),
         ("Admin Login", tester.test_admin_login),
         ("User Registration", tester.test_user_registration),
-        ("Get Services (Public)", tester.test_services),
+        ("Get Services (Public)", tester.test_get_services),
         ("Get Packages (Public)", tester.test_get_packages),
         ("Create Order (Auth Required)", tester.test_create_order),
         ("Add Order Item", tester.test_add_order_item),
