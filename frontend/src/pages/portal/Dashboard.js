@@ -4,6 +4,19 @@ import { ShoppingCart, FolderKanban, MessageSquare, FileText, ArrowRight, Plus }
 import api from '../../api/client';
 import { useAuth } from '../../context/AuthContext';
 
+const StatCard = ({ icon: Icon, label, value, link, color }) => (
+  <Link to={link} className="card p-6 group" data-testid={`stat-${label.toLowerCase()}`}>
+    <div className="flex items-start justify-between mb-4">
+      <div className={`p-3 rounded-xl bg-${color}-500/10 border border-${color}-500/20`}>
+        <Icon className={`w-5 h-5 text-${color}-400`} />
+      </div>
+      <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-blue-400 transition-colors" />
+    </div>
+    <p className="text-3xl font-black mb-1">{value}</p>
+    <p className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">{label}</p>
+  </Link>
+);
+
 export default function PortalDashboard() {
   const { user } = useAuth();
   const [stats, setStats] = useState({
