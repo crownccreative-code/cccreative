@@ -11,11 +11,6 @@ export default function PaymentSuccess() {
   const sessionId = searchParams.get('session_id');
 
   useEffect(() => {
-    if (!sessionId) {
-      setStatus('error');
-      return;
-    }
-
     const pollStatus = async (attempts = 0) => {
       const maxAttempts = 5;
       const pollInterval = 2000;
@@ -49,7 +44,11 @@ export default function PaymentSuccess() {
       }
     };
 
-    pollStatus();
+    if (!sessionId) {
+      setStatus('error');
+    } else {
+      pollStatus();
+    }
   }, [sessionId]);
 
   return (
