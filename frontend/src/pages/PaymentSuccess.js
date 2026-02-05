@@ -101,7 +101,7 @@ export default function PaymentSuccess() {
               <Crown className="w-12 h-12 text-yellow-500 mx-auto mb-6" />
               <h1 className="text-2xl font-black uppercase tracking-tight mb-2">Unable to Verify</h1>
               <p className="text-slate-500 text-sm font-mono mb-6">
-                We couldn't verify your payment status. Please check your email for confirmation.
+                We couldn&apos;t verify your payment status. Please check your email for confirmation.
               </p>
               <Link
                 to="/portal"
