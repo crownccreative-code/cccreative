@@ -82,20 +82,27 @@ const TRANSLATIONS = {
 };
 
 const PlayCard = ({ span, icon, title, label, desc, id }) => (
-  <div className={`${span} group relative overflow-hidden bg-white/[0.01] border border-white/5 p-10 rounded-[2rem] hover:border-blue-500/30 transition-colors`} style={{ transitionDuration: '500ms' }}>
-    <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-3xl group-hover:bg-blue-500/10 transition-colors" style={{ transitionDuration: '500ms' }}></div>
-    <div className="relative z-10 flex flex-col h-full">
-      <div className="flex justify-between items-start mb-12">
-        <div className="p-4 bg-white/5 border border-white/10 rounded-2xl group-hover:border-blue-500/40 transition-colors">
+  <div className={`${span} group relative overflow-hidden rounded-2xl hover:scale-[1.02] transition-transform`} style={{ transitionDuration: '300ms' }}>
+    {/* Card Background */}
+    <div className="absolute inset-0 bg-gradient-to-br from-[#151515] to-[#0D0D0D] rounded-2xl"></div>
+    <div className="absolute inset-0 border border-white/10 rounded-2xl group-hover:border-blue-500/40 transition-colors"></div>
+    
+    {/* Glow Effect */}
+    <div className="absolute top-0 right-0 w-40 h-40 bg-blue-500/5 blur-3xl group-hover:bg-blue-500/15 transition-colors" style={{ transitionDuration: '500ms' }}></div>
+    
+    {/* Content */}
+    <div className="relative z-10 p-8 flex flex-col h-full">
+      <div className="flex justify-between items-start mb-8">
+        <div className="p-4 bg-white/5 border border-white/10 rounded-xl group-hover:border-blue-500/40 group-hover:bg-blue-500/10 transition-colors">
           {icon}
         </div>
-        <span className="font-mono text-[9px] text-slate-800 tracking-widest">{id}</span>
+        <span className="font-mono text-[10px] text-slate-500 tracking-widest bg-black/30 px-2 py-1 rounded">{id}</span>
       </div>
-      <span className="text-blue-400 font-mono text-[9px] tracking-[0.4em] uppercase mb-3 block">{label}</span>
-      <h3 className="text-2xl font-bold mb-6 tracking-tight uppercase group-hover:text-white transition-colors">{title}</h3>
-      <p className="text-slate-500 text-sm leading-relaxed max-w-sm">{desc}</p>
-      <div className="mt-12 flex items-center gap-3 text-[9px] font-mono text-slate-700 group-hover:text-blue-400 cursor-pointer transition-colors tracking-widest uppercase">
-        OPEN_PROTOCOL <ChevronRight className="w-3 h-3" />
+      <span className="text-blue-400 font-mono text-[10px] tracking-[0.3em] uppercase mb-2 block">{label}</span>
+      <h3 className="text-xl font-bold mb-4 tracking-tight uppercase text-white group-hover:text-blue-100 transition-colors">{title}</h3>
+      <p className="text-slate-400 text-sm leading-relaxed flex-1">{desc}</p>
+      <div className="mt-6 pt-4 border-t border-white/5 flex items-center gap-2 text-[10px] font-mono text-slate-500 group-hover:text-blue-400 cursor-pointer transition-colors tracking-widest uppercase">
+        LEARN MORE <ChevronRight className="w-3 h-3" />
       </div>
     </div>
   </div>
