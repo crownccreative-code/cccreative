@@ -338,29 +338,64 @@ export default function Landing() {
 
       {/* Tiers Section */}
       <section id="fix" className="py-32 px-6 border-t border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-left mb-24">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-left mb-16">
             <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tighter uppercase">{t.tiersHead}</h2>
             <p className="text-slate-500 font-mono text-[10px] tracking-[0.6em] uppercase">{t.tiersSub}</p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
             {t.tiers.map((tier, idx) => (
-              <div key={idx} className={`p-10 rounded-[2.5rem] border ${idx === 1 ? 'border-blue-500/40 bg-blue-500/[0.03]' : 'border-white/5 bg-white/[0.01]'} backdrop-blur-3xl hover:-translate-y-2 transition-transform relative overflow-hidden group`} style={{ transitionDuration: '700ms' }}>
-                {idx === 1 && <div className="absolute top-0 right-0 px-5 py-1.5 bg-blue-600 text-white text-[9px] font-black uppercase tracking-widest">Recommended</div>}
-                <span className="text-xs font-mono text-blue-500 uppercase tracking-[0.5em] mb-4 block">{tier.name}</span>
-                <h3 className="text-2xl font-black mb-8 uppercase tracking-tighter">{tier.hook}</h3>
-                <p className="text-slate-500 text-sm mb-12 italic border-l-2 border-blue-500/20 pl-6 leading-relaxed">{tier.val}</p>
-                <ul className="space-y-5 mb-14">
-                  {tier.features.map(f => (
-                    <li key={f} className="flex items-center gap-4 text-[10px] font-mono uppercase tracking-widest text-slate-400">
-                      <div className="w-1 h-1 bg-blue-500 rounded-full"></div>{f}
-                    </li>
-                  ))}
-                </ul>
-                <a href="#inquiry" className={`block w-full py-5 text-center text-[10px] font-black uppercase tracking-[0.4em] transition-colors ${idx === 1 ? 'bg-blue-600 text-white shadow-xl shadow-blue-500/20' : 'bg-white/5 border border-white/10 text-white hover:bg-white/10'}`}>
-                  {tier.cta}
-                </a>
+              <div 
+                key={idx} 
+                className="relative overflow-hidden rounded-xl transition-all duration-300 hover:-translate-y-2 group"
+              >
+                {/* Card Background - Dark Gray Box */}
+                <div 
+                  className="absolute inset-0 rounded-xl"
+                  style={{ 
+                    backgroundColor: idx === 1 ? '#0c1220' : '#121212',
+                    boxShadow: '0 4px 24px rgba(0,0,0,0.6)'
+                  }}
+                ></div>
+                <div 
+                  className="absolute inset-0 rounded-xl transition-colors duration-300"
+                  style={{ 
+                    border: idx === 1 ? '2px solid rgba(59, 130, 246, 0.5)' : '1px solid #2a2a2a'
+                  }}
+                ></div>
+                
+                {/* Recommended Badge */}
+                {idx === 1 && (
+                  <div className="absolute top-0 right-0 px-4 py-1.5 bg-blue-600 text-white text-[9px] font-black uppercase tracking-widest rounded-bl-lg">
+                    Recommended
+                  </div>
+                )}
+                
+                {/* Content */}
+                <div className="relative z-10 p-8 flex flex-col h-full min-h-[380px]">
+                  <span className="text-xs font-mono text-blue-400 uppercase tracking-[0.4em] mb-3 block">{tier.name}</span>
+                  <h3 className="text-2xl font-black mb-6 uppercase tracking-tighter text-white">{tier.hook}</h3>
+                  <p className="text-sm mb-8 leading-relaxed pl-4" style={{ color: '#888', borderLeft: '2px solid rgba(59, 130, 246, 0.3)' }}>{tier.val}</p>
+                  <ul className="space-y-4 mb-8 flex-1">
+                    {tier.features.map(f => (
+                      <li key={f} className="flex items-center gap-3 text-[10px] font-mono uppercase tracking-widest" style={{ color: '#999' }}>
+                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>{f}
+                      </li>
+                    ))}
+                  </ul>
+                  <a 
+                    href="#inquiry" 
+                    className={`block w-full py-4 text-center text-[10px] font-black uppercase tracking-[0.3em] transition-all duration-300 rounded-lg ${
+                      idx === 1 
+                        ? 'bg-blue-600 text-white hover:bg-blue-500 shadow-lg shadow-blue-500/30' 
+                        : 'text-white hover:bg-white/10'
+                    }`}
+                    style={idx !== 1 ? { backgroundColor: '#1a1a1a', border: '1px solid #333' } : {}}
+                  >
+                    {tier.cta}
+                  </a>
+                </div>
               </div>
             ))}
           </div>
