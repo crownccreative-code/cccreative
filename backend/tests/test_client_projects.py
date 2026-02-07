@@ -27,7 +27,9 @@ class TestSetup:
             "password": password
         })
         if response.status_code == 200:
-            return response.json().get("token")
+            data = response.json()
+            # API returns access_token, not token
+            return data.get("access_token") or data.get("token")
         return None
     
     @staticmethod
@@ -62,7 +64,7 @@ class TestAdminAuthentication:
         })
         assert response.status_code == 200, f"Admin login failed: {response.text}"
         data = response.json()
-        assert "token" in data
+        assert "access_token" in data or "token" in data
         assert "user" in data
         assert data["user"]["email"].lower() == ADMIN_EMAIL.lower()
         print(f"✓ Admin login successful for {ADMIN_EMAIL}")
@@ -93,7 +95,7 @@ class TestClientAuthentication:
         })
         assert response.status_code == 200, f"Client login failed: {response.text}"
         data = response.json()
-        assert "token" in data
+        assert "access_token" in data or "token" in data
         assert "user" in data
         print(f"✓ Client login successful for {CLIENT_EMAIL}")
     
