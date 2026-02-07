@@ -251,9 +251,19 @@ export default function Landing() {
               {t.status}
             </div>
             
-            <h1 className="text-5xl md:text-8xl font-black tracking-tighter mb-8 leading-[0.9] uppercase text-white">
+            <h1 className="text-6xl md:text-[7rem] font-black tracking-tighter mb-8 leading-[0.85] uppercase text-white">
               {t.headline[0]} <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-[#D4AF37]">
+              <span 
+                className="relative inline-block"
+                style={{
+                  background: 'linear-gradient(90deg, #60A5FA, #93C5FD, #D4AF37)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  filter: 'drop-shadow(0 0 20px rgba(59, 130, 246, 0.6)) drop-shadow(0 0 40px rgba(212, 175, 55, 0.4))',
+                  textShadow: '0 0 30px rgba(59, 130, 246, 0.5), 0 0 60px rgba(212, 175, 55, 0.3)'
+                }}
+              >
                 {t.headline[1]}
               </span>
             </h1>
@@ -276,17 +286,16 @@ export default function Landing() {
           </div>
 
           <div className="hidden md:flex justify-center relative">
-            <div className="absolute inset-0 bg-blue-600/5 blur-[100px] rounded-full animate-pulse"></div>
-            <svg width="400" height="500" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative z-10 drop-shadow-[0_0_30px_rgba(59,130,246,0.2)]">
-               <path d="M200 120L230 160V180L215 190V380L250 400V430H150V400L185 380V190L170 160V140L200 120Z" fill="#111" stroke="#3B82F6" strokeWidth="2" />
-               <path d="M200 200V350" stroke="#3B82F6" strokeWidth="1" strokeDasharray="4 4" />
-               <path d="M190 220V330" stroke="#3B82F6" strokeWidth="1" opacity="0.5" />
-               <path d="M210 240V310" stroke="#3B82F6" strokeWidth="1" opacity="0.5" />
-               <circle cx="200" cy="200" r="3" fill="#3B82F6" className="animate-pulse" />
-               <circle cx="200" cy="350" r="3" fill="#3B82F6" className="animate-pulse" />
-               <path d="M160 120L180 80L200 110L220 80L240 120H160Z" fill="#D4AF37" />
-               <circle cx="200" cy="70" r="5" fill="#D4AF37" />
-            </svg>
+            <div className="absolute inset-0 bg-blue-600/10 blur-[80px] rounded-full"></div>
+            <div className="absolute inset-0 bg-yellow-500/5 blur-[100px] rounded-full translate-y-10"></div>
+            <img 
+              src="https://customer-assets.emergentagent.com/job_crown-services/artifacts/5pue7alc_ccc%20design.jpg"
+              alt="Crown Collective Creative - Chess King with AI circuits"
+              className="relative z-10 w-full max-w-md object-contain"
+              style={{
+                filter: 'drop-shadow(0 0 30px rgba(59, 130, 246, 0.3)) drop-shadow(0 0 60px rgba(212, 175, 55, 0.2))'
+              }}
+            />
           </div>
         </div>
       </section>
