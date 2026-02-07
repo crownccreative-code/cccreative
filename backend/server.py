@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from config.database import connect_db, close_db
-from routes import auth, services, orders, payments, intake, projects, messages, files, admin
+from routes import auth, services, orders, payments, intake, projects, messages, files, admin, client_projects
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -48,6 +48,7 @@ app.include_router(projects.router)
 app.include_router(messages.router)
 app.include_router(files.router)
 app.include_router(admin.router)
+app.include_router(client_projects.router)
 
 # Stripe webhook needs to be at root level
 from routes.payments import stripe_webhook
