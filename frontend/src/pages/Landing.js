@@ -289,7 +289,7 @@ export default function Landing() {
             <div className="absolute inset-0 bg-blue-600/10 blur-[80px] rounded-full"></div>
             <div className="absolute inset-0 bg-yellow-500/5 blur-[100px] rounded-full translate-y-10"></div>
             <img 
-              src="https://customer-assets.emergentagent.com/job_crown-services/artifacts/5pue7alc_ccc%20design.jpg"
+              src="https://customer-assets.emergentagent.com/job_crown-services/artifacts/05u4v7po_ccc%20design.jpg"
               alt="Crown Collective Creative - Chess King with AI circuits"
               className="relative z-10 w-full max-w-md object-contain"
               style={{
