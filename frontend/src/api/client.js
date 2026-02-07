@@ -287,6 +287,77 @@ class ApiClient {
   async getStats() {
     return this.request('/api/admin/stats');
   }
+
+  // ============ CCC Admin / Client Projects ============
+
+  // Check if current user is CCC admin
+  async checkCCCAdmin() {
+    return this.request('/api/client-projects/check-admin');
+  }
+
+  // Get all clients (CCC Admin only)
+  async getAllClients() {
+    return this.request('/api/client-projects/admin/clients');
+  }
+
+  // Get a specific client's project (CCC Admin only)
+  async getClientProject(userId) {
+    return this.request(`/api/client-projects/admin/client/${userId}`);
+  }
+
+  // Update a client's project (CCC Admin only)
+  async updateClientProject(userId, data) {
+    return this.request(`/api/client-projects/admin/client/${userId}`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    });
+  }
+
+  // Add a next step for a client (CCC Admin only)
+  async addNextStep(userId, text) {
+    return this.request(`/api/client-projects/admin/client/${userId}/next-step?text=${encodeURIComponent(text)}`, {
+      method: 'POST',
+    });
+  }
+
+  // Remove a next step (CCC Admin only)
+  async removeNextStep(userId, stepId) {
+    return this.request(`/api/client-projects/admin/client/${userId}/next-step/${stepId}`, {
+      method: 'DELETE',
+    });
+  }
+
+  // Get my project (Client)
+  async getMyProject() {
+    return this.request('/api/client-projects/my-project');
+  }
+
+  // Toggle next step completion (Client)
+  async toggleNextStep(stepId, completed) {
+    return this.request(`/api/client-projects/my-project/next-step/${stepId}?completed=${completed}`, {
+      method: 'PATCH',
+    });
+  }
+
+  // Upload file to project
+  async uploadProjectFile(userId, data) {
+    return this.request(`/api/client-projects/files/${userId}`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+  }
+
+  // Get project files
+  async getProjectFiles(userId) {
+    return this.request(`/api/client-projects/files/${userId}`);
+  }
+
+  // Delete project file
+  async deleteProjectFile(fileId) {
+    return this.request(`/api/client-projects/files/${fileId}`, {
+      method: 'DELETE',
+    });
+  }
 }
 
 export const api = new ApiClient();
