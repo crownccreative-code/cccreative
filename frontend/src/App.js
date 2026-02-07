@@ -76,6 +76,13 @@ function App() {
         <Route path="files" element={<PortalFiles />} />
       </Route>
 
+      {/* CCC Admin Route (Special - restricted to crownccreative@gmail.com) */}
+      <Route path="/ccc-admin" element={
+        <ProtectedRoute>
+          <CCCAdmin />
+        </ProtectedRoute>
+      } />
+
       {/* Admin Routes */}
       <Route path="/admin" element={
         <ProtectedRoute requireAdmin>
