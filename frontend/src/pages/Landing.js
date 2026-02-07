@@ -280,16 +280,16 @@ export default function Landing() {
       </section>
 
       {/* Bento Playbook */}
-      <section id="start" className="py-24 px-6 border-t border-white/5 bg-[#080808]">
+      <section id="start" className="py-24 px-6 border-t border-white/5">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-20 text-left">
+          <div className="mb-16 text-left">
             <span className="font-mono text-blue-500 text-[10px] uppercase tracking-[0.5em] mb-4 block">{t.bentoSubtitle}</span>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight uppercase">{t.bentoTitle}</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <PlayCard 
-              span="md:col-span-8"
+              span=""
               icon={<Repeat className="w-6 h-6 text-blue-400" />}
               label={t.services[0].label}
               title={t.services[0].title}
@@ -297,7 +297,7 @@ export default function Landing() {
               id="STRAT_01"
             />
             <PlayCard 
-              span="md:col-span-4"
+              span=""
               icon={<MousePointerClick className="w-6 h-6 text-[#D4AF37]" />}
               label={t.services[1].label}
               title={t.services[1].title}
@@ -305,7 +305,7 @@ export default function Landing() {
               id="STRAT_02"
             />
             <PlayCard 
-              span="md:col-span-4"
+              span=""
               icon={<Search className="w-6 h-6 text-blue-400" />}
               label={t.services[2].label}
               title={t.services[2].title}
@@ -313,7 +313,7 @@ export default function Landing() {
               id="STRAT_03"
             />
             <PlayCard 
-              span="md:col-span-8"
+              span=""
               icon={<Users className="w-6 h-6 text-[#D4AF37]" />}
               label={t.services[3].label}
               title={t.services[3].title}
