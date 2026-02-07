@@ -82,26 +82,26 @@ const TRANSLATIONS = {
 };
 
 const PlayCard = ({ span, icon, title, label, desc, id }) => (
-  <div className={`${span} group relative overflow-hidden rounded-2xl hover:scale-[1.02] transition-transform`} style={{ transitionDuration: '300ms' }}>
-    {/* Card Background - Dark Gray Box */}
-    <div className="absolute inset-0 bg-[#141414] rounded-2xl"></div>
-    <div className="absolute inset-0 border border-[#2a2a2a] rounded-2xl group-hover:border-blue-500/50 transition-colors"></div>
+  <div className={`${span} group relative overflow-hidden rounded-xl hover:scale-[1.01] transition-transform`} style={{ transitionDuration: '300ms' }}>
+    {/* Card Background - Visible Dark Gray Box */}
+    <div className="absolute inset-0 bg-[#111111] rounded-xl shadow-xl"></div>
+    <div className="absolute inset-0 border-2 border-[#1e1e1e] rounded-xl group-hover:border-blue-500/60 transition-colors"></div>
     
-    {/* Subtle Glow Effect */}
-    <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-3xl group-hover:bg-blue-500/20 transition-colors" style={{ transitionDuration: '500ms' }}></div>
+    {/* Inner highlight line at top */}
+    <div className="absolute top-0 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-[#333] to-transparent"></div>
     
     {/* Content */}
-    <div className="relative z-10 p-8 flex flex-col h-full min-h-[280px]">
-      <div className="flex justify-between items-start mb-6">
-        <div className="p-3 bg-[#1a1a1a] border border-[#333] rounded-xl group-hover:border-blue-500/50 group-hover:bg-blue-500/10 transition-colors">
+    <div className="relative z-10 p-7 flex flex-col h-full min-h-[260px]">
+      <div className="flex justify-between items-start mb-5">
+        <div className="p-3 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg group-hover:border-blue-500/50 group-hover:bg-blue-500/10 transition-colors">
           {icon}
         </div>
-        <span className="font-mono text-[10px] text-slate-500 tracking-widest bg-[#0a0a0a] px-3 py-1 rounded-full border border-[#222]">{id}</span>
+        <span className="font-mono text-[9px] text-[#555] tracking-widest">{id}</span>
       </div>
-      <span className="text-blue-400 font-mono text-[10px] tracking-[0.3em] uppercase mb-2 block">{label}</span>
-      <h3 className="text-xl font-bold mb-4 tracking-tight uppercase text-white group-hover:text-blue-100 transition-colors">{title}</h3>
-      <p className="text-slate-400 text-sm leading-relaxed flex-1">{desc}</p>
-      <div className="mt-6 pt-4 border-t border-[#222] flex items-center gap-2 text-[10px] font-mono text-slate-500 group-hover:text-blue-400 cursor-pointer transition-colors tracking-widest uppercase">
+      <span className="text-blue-400 font-mono text-[10px] tracking-[0.25em] uppercase mb-2 block">{label}</span>
+      <h3 className="text-lg font-bold mb-3 tracking-tight uppercase text-white group-hover:text-blue-100 transition-colors">{title}</h3>
+      <p className="text-[#888] text-sm leading-relaxed flex-1">{desc}</p>
+      <div className="mt-5 pt-4 border-t border-[#1a1a1a] flex items-center gap-2 text-[10px] font-mono text-[#555] group-hover:text-blue-400 cursor-pointer transition-colors tracking-widest uppercase">
         LEARN MORE <ChevronRight className="w-3 h-3" />
       </div>
     </div>
