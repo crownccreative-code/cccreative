@@ -83,33 +83,36 @@ const TRANSLATIONS = {
 
 const PlayCard = ({ span, icon, title, label, desc, id }) => (
   <div className={`${span} group relative overflow-hidden rounded-xl transition-all duration-300 hover:-translate-y-1`}>
-    {/* Card Background - Solid Gray Box */}
+    {/* Card Background - Visible Gray Box */}
     <div 
       className="absolute inset-0 rounded-xl"
       style={{ 
-        backgroundColor: '#0f0f0f',
-        boxShadow: '0 4px 20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05)'
+        backgroundColor: '#121212',
+        boxShadow: '0 4px 24px rgba(0,0,0,0.6)'
       }}
     ></div>
-    <div className="absolute inset-0 border border-[#252525] rounded-xl group-hover:border-blue-500/60 transition-colors duration-300"></div>
+    <div 
+      className="absolute inset-0 rounded-xl group-hover:border-blue-500/60 transition-colors duration-300"
+      style={{ border: '1px solid #2a2a2a' }}
+    ></div>
     
     {/* Content */}
-    <div className="relative z-10 p-7 flex flex-col h-full min-h-[240px]">
+    <div className="relative z-10 p-7 flex flex-col h-full min-h-[220px]">
       <div className="flex justify-between items-start mb-5">
         <div 
           className="p-3 rounded-lg group-hover:bg-blue-500/20 transition-colors duration-300"
-          style={{ backgroundColor: '#181818', border: '1px solid #2a2a2a' }}
+          style={{ backgroundColor: '#1c1c1c', border: '1px solid #333' }}
         >
           {icon}
         </div>
-        <span className="font-mono text-[9px] tracking-widest" style={{ color: '#444' }}>{id}</span>
+        <span className="font-mono text-[9px] tracking-widest" style={{ color: '#555' }}>{id}</span>
       </div>
       <span className="text-blue-400 font-mono text-[10px] tracking-[0.25em] uppercase mb-2 block">{label}</span>
       <h3 className="text-lg font-bold mb-3 tracking-tight uppercase text-white group-hover:text-blue-100 transition-colors">{title}</h3>
-      <p className="text-sm leading-relaxed flex-1" style={{ color: '#777' }}>{desc}</p>
+      <p className="text-sm leading-relaxed flex-1" style={{ color: '#888' }}>{desc}</p>
       <div 
         className="mt-5 pt-4 flex items-center gap-2 text-[10px] font-mono group-hover:text-blue-400 cursor-pointer transition-colors tracking-widest uppercase"
-        style={{ borderTop: '1px solid #1a1a1a', color: '#444' }}
+        style={{ borderTop: '1px solid #222', color: '#555' }}
       >
         LEARN MORE <ChevronRight className="w-3 h-3" />
       </div>
