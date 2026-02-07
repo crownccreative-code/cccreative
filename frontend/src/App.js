@@ -24,6 +24,7 @@ import AdminOrders from './pages/admin/Orders';
 import AdminIntakes from './pages/admin/Intakes';
 import AdminPortfolio from './pages/admin/Portfolio';
 import AdminUsers from './pages/admin/Users';
+import CCCAdmin from './pages/CCCAdmin';
 import './App.css';
 
 // Protected Route Component
