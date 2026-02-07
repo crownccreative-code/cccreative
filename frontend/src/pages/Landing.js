@@ -290,13 +290,13 @@ export default function Landing() {
 
       {/* Bento Playbook */}
       <section id="start" className="py-24 px-6 border-t border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-16 text-left">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-14 text-left">
             <span className="font-mono text-blue-500 text-[10px] uppercase tracking-[0.5em] mb-4 block">{t.bentoSubtitle}</span>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight uppercase">{t.bentoTitle}</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <PlayCard 
               span=""
               icon={<Repeat className="w-6 h-6 text-blue-400" />}
