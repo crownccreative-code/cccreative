@@ -6,9 +6,6 @@ export default function PaymentCancel() {
   return (
     <div className="min-h-screen bg-[#050505] flex items-center justify-center px-6">
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 opacity-[0.03]" 
-             style={{ backgroundImage: `linear-gradient(#EF4444 1px, transparent 1px), linear-gradient(90deg, #EF4444 1px, transparent 1px)`, backgroundSize: '60px 60px' }}>
-        </div>
         <div className="absolute top-[30%] right-[20%] w-[30%] h-[30%] bg-red-600/10 blur-[150px] rounded-full"></div>
       </div>
 

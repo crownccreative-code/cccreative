@@ -41,9 +41,6 @@ export default function Register() {
     <div className="min-h-screen bg-[#050505] flex items-center justify-center px-6 py-12">
       {/* Background Effects */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 opacity-[0.03]" 
-             style={{ backgroundImage: `linear-gradient(#3B82F6 1px, transparent 1px), linear-gradient(90deg, #3B82F6 1px, transparent 1px)`, backgroundSize: '60px 60px' }}>
-        </div>
         <div className="absolute bottom-[-20%] left-[-10%] w-[50%] h-[50%] bg-yellow-600/5 blur-[150px] rounded-full"></div>
       </div>
 

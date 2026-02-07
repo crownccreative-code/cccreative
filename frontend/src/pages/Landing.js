@@ -128,9 +128,6 @@ export default function Landing() {
     <div className="min-h-screen bg-[#050505] text-[#F5F5F7] font-sans selection:bg-blue-500/30 overflow-x-hidden">
       {/* Visual Foundation */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 opacity-[0.05]" 
-             style={{ backgroundImage: `linear-gradient(#3B82F6 1px, transparent 1px), linear-gradient(90deg, #3B82F6 1px, transparent 1px)`, backgroundSize: '60px 60px' }}>
-        </div>
         <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-blue-600/5 blur-[120px] rounded-full"></div>
         <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-yellow-600/5 blur-[100px] rounded-full"></div>
       </div>

@@ -54,9 +54,6 @@ export default function PaymentSuccess() {
   return (
     <div className="min-h-screen bg-[#050505] flex items-center justify-center px-6">
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 opacity-[0.03]" 
-             style={{ backgroundImage: `linear-gradient(#10B981 1px, transparent 1px), linear-gradient(90deg, #10B981 1px, transparent 1px)`, backgroundSize: '60px 60px' }}>
-        </div>
         <div className="absolute top-[20%] left-[20%] w-[40%] h-[40%] bg-green-600/10 blur-[150px] rounded-full"></div>
       </div>
 
