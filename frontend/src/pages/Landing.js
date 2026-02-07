@@ -82,26 +82,35 @@ const TRANSLATIONS = {
 };
 
 const PlayCard = ({ span, icon, title, label, desc, id }) => (
-  <div className={`${span} group relative overflow-hidden rounded-xl hover:scale-[1.01] transition-transform`} style={{ transitionDuration: '300ms' }}>
-    {/* Card Background - Visible Dark Gray Box */}
-    <div className="absolute inset-0 bg-[#111111] rounded-xl shadow-xl"></div>
-    <div className="absolute inset-0 border-2 border-[#1e1e1e] rounded-xl group-hover:border-blue-500/60 transition-colors"></div>
-    
-    {/* Inner highlight line at top */}
-    <div className="absolute top-0 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-[#333] to-transparent"></div>
+  <div className={`${span} group relative overflow-hidden rounded-xl transition-all duration-300 hover:-translate-y-1`}>
+    {/* Card Background - Solid Gray Box */}
+    <div 
+      className="absolute inset-0 rounded-xl"
+      style={{ 
+        backgroundColor: '#0f0f0f',
+        boxShadow: '0 4px 20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05)'
+      }}
+    ></div>
+    <div className="absolute inset-0 border border-[#252525] rounded-xl group-hover:border-blue-500/60 transition-colors duration-300"></div>
     
     {/* Content */}
-    <div className="relative z-10 p-7 flex flex-col h-full min-h-[260px]">
+    <div className="relative z-10 p-7 flex flex-col h-full min-h-[240px]">
       <div className="flex justify-between items-start mb-5">
-        <div className="p-3 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg group-hover:border-blue-500/50 group-hover:bg-blue-500/10 transition-colors">
+        <div 
+          className="p-3 rounded-lg group-hover:bg-blue-500/20 transition-colors duration-300"
+          style={{ backgroundColor: '#181818', border: '1px solid #2a2a2a' }}
+        >
           {icon}
         </div>
-        <span className="font-mono text-[9px] text-[#555] tracking-widest">{id}</span>
+        <span className="font-mono text-[9px] tracking-widest" style={{ color: '#444' }}>{id}</span>
       </div>
       <span className="text-blue-400 font-mono text-[10px] tracking-[0.25em] uppercase mb-2 block">{label}</span>
       <h3 className="text-lg font-bold mb-3 tracking-tight uppercase text-white group-hover:text-blue-100 transition-colors">{title}</h3>
-      <p className="text-[#888] text-sm leading-relaxed flex-1">{desc}</p>
-      <div className="mt-5 pt-4 border-t border-[#1a1a1a] flex items-center gap-2 text-[10px] font-mono text-[#555] group-hover:text-blue-400 cursor-pointer transition-colors tracking-widest uppercase">
+      <p className="text-sm leading-relaxed flex-1" style={{ color: '#777' }}>{desc}</p>
+      <div 
+        className="mt-5 pt-4 flex items-center gap-2 text-[10px] font-mono group-hover:text-blue-400 cursor-pointer transition-colors tracking-widest uppercase"
+        style={{ borderTop: '1px solid #1a1a1a', color: '#444' }}
+      >
         LEARN MORE <ChevronRight className="w-3 h-3" />
       </div>
     </div>
