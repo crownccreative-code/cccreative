@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException, Depends, Request
 from bson import ObjectId
 from datetime import datetime
+import os
 from config.database import get_db
 from config.settings import settings
 from middleware.auth import get_current_user, require_admin
@@ -13,6 +14,8 @@ from services.email_service import email_service
 from emergentintegrations.payments.stripe.checkout import (
     StripeCheckout, CheckoutSessionRequest, CheckoutSessionResponse, CheckoutStatusResponse
 )
+
+ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL", "admin@crowncollective.com")
 
 router = APIRouter(prefix="/api/payments", tags=["Payments"])
 
@@ -167,7 +170,7 @@ async def process_successful_payment(db, order_id: str, session_id: str):
         )
         # Notify admin
         await email_service.send_new_order_notification(
-            "admin@crowncollective.com",
+            ADMIN_EMAIL,
             order_id,
             user["name"]
         )
