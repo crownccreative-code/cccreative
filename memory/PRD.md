@@ -32,6 +32,13 @@ Full-stack service business platform for Crown Collective Creative offering web 
 
 ## What's Been Implemented (Feb 7, 2026)
 
+### "Inquire" CTA Button (Latest - Feb 15, 2026)
+- Added prominent "Inquire" CTA button linking to Google Form (https://forms.gle/oLKR3vLosFSWkywF9)
+- **Hero Section**: Gold "Inquire" button with arrow icon next to "Start Your Winning Move"
+- **Desktop Navigation**: Gold "Inquire" button in top nav (visible on md+ screens)
+- **Mobile Sticky**: Fixed "Inquire Now" button at bottom of viewport for easy access
+- All buttons open in new tab (`target="_blank"`)
+
 ### Role-Based Project Management System (P0 - COMPLETE)
 - **Hidden Admin Route `/ccc-admin`**: Only accessible by crownccreative@gmail.com
 - **Admin Dashboard Features**:
