@@ -489,7 +489,10 @@ export default function Landing() {
       </footer>
 
       {/* Sticky Mobile Inquire Button */}
-      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-50 p-4 bg-gradient-to-t from-[#050505] via-[#050505]/95 to-transparent">
+      <div 
+        className="sm:hidden p-4 bg-gradient-to-t from-[#050505] via-[#050505]/95 to-transparent"
+        style={{ position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 9999 }}
+      >
         <a 
           href="https://forms.gle/oLKR3vLosFSWkywF9"
           target="_blank"
