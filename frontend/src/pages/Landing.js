@@ -295,11 +295,10 @@ export default function Landing() {
               </a>
             </div>
             <div className="flex items-center gap-3 mt-8">
-                <div className="w-10 h-10 flex items-center justify-center rounded-full border border-blue-500/20">
-                  <Trophy className="w-4 h-4 text-blue-500" />
-                </div>
-                <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest italic">CHECKMATE_MODE: ON</span>
+              <div className="w-10 h-10 flex items-center justify-center rounded-full border border-blue-500/20">
+                <Trophy className="w-4 h-4 text-blue-500" />
               </div>
+              <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest italic">CHECKMATE_MODE: ON</span>
             </div>
           </div>
 
