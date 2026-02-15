@@ -250,59 +250,60 @@ export default function Landing() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-48 pb-32 md:pt-64 md:pb-56 px-6 text-left">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 items-center gap-20">
-          <div>
-            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-blue-500/5 border border-blue-500/20 text-[9px] font-mono uppercase tracking-[0.4em] text-blue-400 mb-8">
-              <Cpu className="w-3 h-3" style={{ animation: 'spin 3s linear infinite' }} />
-              {t.status}
-            </div>
-            
-            <h1 className="text-6xl md:text-[7rem] font-black tracking-tighter mb-8 leading-[0.85] uppercase text-white">
-              {t.headline[0]} <br />
-              <span 
-                className="relative inline-block"
-                style={{
-                  background: 'linear-gradient(90deg, #60A5FA, #93C5FD, #D4AF37)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  filter: 'drop-shadow(0 0 20px rgba(59, 130, 246, 0.6)) drop-shadow(0 0 40px rgba(212, 175, 55, 0.4))',
-                  textShadow: '0 0 30px rgba(59, 130, 246, 0.5), 0 0 60px rgba(212, 175, 55, 0.3)'
-                }}
-              >
-                {t.headline[1]}
-              </span>
-            </h1>
-            
-            <p className="max-w-lg text-slate-400 text-lg md:text-xl font-light mb-12 leading-relaxed">
-              {t.heroSub}
-            </p>
-            
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
-              <a 
-                href="https://forms.gle/oLKR3vLosFSWkywF9"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-12 py-5 bg-[#D4AF37] text-black text-[11px] font-black uppercase tracking-[0.2em] hover:bg-white transition-colors shadow-2xl shadow-yellow-500/10 w-full sm:w-auto text-center flex items-center justify-center gap-3"
-                data-testid="hero-inquire-btn"
-              >
-                <ArrowUpRight className="w-4 h-4" />
-                Inquire
-              </a>
-              <a href="#inquiry" className="px-10 py-5 border-2 border-white/20 text-white text-[11px] font-black uppercase tracking-[0.2em] hover:border-blue-500/50 hover:bg-blue-500/5 transition-colors w-full sm:w-auto text-center" data-testid="hero-cta-btn">
-                {t.heroCta}
-              </a>
-            </div>
-            <div className="flex items-center gap-3 mt-8">
-              <div className="w-10 h-10 flex items-center justify-center rounded-full border border-blue-500/20">
-                <Trophy className="w-4 h-4 text-blue-500" />
+      <section className="relative pt-48 pb-32 md:pt-64 md:pb-56 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 items-center gap-12 md:gap-20">
+            <div className="text-left">
+              <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-blue-500/5 border border-blue-500/20 text-[9px] font-mono uppercase tracking-[0.4em] text-blue-400 mb-8">
+                <Cpu className="w-3 h-3" style={{ animation: 'spin 3s linear infinite' }} />
+                {t.status}
               </div>
-              <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest italic">CHECKMATE_MODE: ON</span>
+              
+              <h1 className="text-5xl sm:text-6xl md:text-[7rem] font-black tracking-tighter mb-8 leading-[0.85] uppercase text-white">
+                {t.headline[0]} <br />
+                <span 
+                  className="relative inline-block"
+                  style={{
+                    background: 'linear-gradient(90deg, #60A5FA, #93C5FD, #D4AF37)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    filter: 'drop-shadow(0 0 20px rgba(59, 130, 246, 0.6)) drop-shadow(0 0 40px rgba(212, 175, 55, 0.4))',
+                    textShadow: '0 0 30px rgba(59, 130, 246, 0.5), 0 0 60px rgba(212, 175, 55, 0.3)'
+                  }}
+                >
+                  {t.headline[1]}
+                </span>
+              </h1>
+              
+              <p className="max-w-lg text-slate-400 text-lg md:text-xl font-light mb-12 leading-relaxed">
+                {t.heroSub}
+              </p>
+              
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+                <a 
+                  href="https://forms.gle/oLKR3vLosFSWkywF9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-12 py-5 bg-[#D4AF37] text-black text-[11px] font-black uppercase tracking-[0.2em] hover:bg-white transition-colors shadow-2xl shadow-yellow-500/10 w-full sm:w-auto text-center flex items-center justify-center gap-3"
+                  data-testid="hero-inquire-btn"
+                >
+                  <ArrowUpRight className="w-4 h-4" />
+                  Inquire
+                </a>
+                <a href="#inquiry" className="px-10 py-5 border-2 border-white/20 text-white text-[11px] font-black uppercase tracking-[0.2em] hover:border-blue-500/50 hover:bg-blue-500/5 transition-colors w-full sm:w-auto text-center" data-testid="hero-cta-btn">
+                  {t.heroCta}
+                </a>
+              </div>
+              <div className="flex items-center gap-3 mt-8">
+                <div className="w-10 h-10 flex items-center justify-center rounded-full border border-blue-500/20">
+                  <Trophy className="w-4 h-4 text-blue-500" />
+                </div>
+                <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest italic">CHECKMATE_MODE: ON</span>
+              </div>
             </div>
-          </div>
 
-          <div className="hidden md:flex justify-center relative">
+            <div className="hidden md:flex justify-center relative">
             <div className="absolute inset-0 bg-blue-600/10 blur-[80px] rounded-full"></div>
             <div className="absolute inset-0 bg-yellow-500/5 blur-[100px] rounded-full translate-y-10"></div>
             <img 
