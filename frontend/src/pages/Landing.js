@@ -173,6 +173,18 @@ export default function Landing() {
               <span className={lang === 'ES' ? 'text-blue-400 font-bold' : ''}>ES</span>
             </button>
 
+            {/* Inquire Button - Desktop Nav */}
+            <a 
+              href="https://forms.gle/oLKR3vLosFSWkywF9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:flex items-center gap-2 px-6 py-2.5 bg-[#D4AF37] hover:bg-white text-black text-[10px] font-bold uppercase tracking-widest transition-colors rounded-sm shadow-lg shadow-yellow-500/20"
+              data-testid="nav-inquire-btn"
+            >
+              <ArrowUpRight className="w-3 h-3" />
+              Inquire
+            </a>
+
             {/* Auth/Portal Button */}
             {user ? (
               <Link 
@@ -186,18 +198,13 @@ export default function Landing() {
             ) : (
               <Link 
                 to="/login"
-                className="hidden sm:flex items-center gap-2 px-6 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-bold uppercase tracking-widest transition-colors rounded-sm shadow-lg shadow-blue-600/20"
+                className="hidden sm:flex items-center gap-2 px-6 py-2.5 border border-white/20 hover:border-blue-500/50 text-white text-[10px] font-bold uppercase tracking-widest transition-colors rounded-sm"
                 data-testid="login-btn"
               >
                 <LogIn className="w-3 h-3" />
                 Login
               </Link>
             )}
-
-            {/* Action Button */}
-            <a href="#inquiry" className="hidden sm:block px-6 py-2.5 bg-[#D4AF37] hover:bg-white text-black text-[10px] font-bold uppercase tracking-widest transition-colors rounded-sm shadow-lg shadow-yellow-500/20" data-testid="cta-btn">
-              {t.nav[3]}
-            </a>
 
             {/* Mobile Menu */}
             <div className="relative" ref={menuRef}>
