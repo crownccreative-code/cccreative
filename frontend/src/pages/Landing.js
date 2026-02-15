@@ -304,16 +304,17 @@ export default function Landing() {
             </div>
 
             <div className="hidden md:flex justify-center relative">
-            <div className="absolute inset-0 bg-blue-600/10 blur-[80px] rounded-full"></div>
-            <div className="absolute inset-0 bg-yellow-500/5 blur-[100px] rounded-full translate-y-10"></div>
-            <img 
-              src="https://customer-assets.emergentagent.com/job_crown-services/artifacts/05u4v7po_ccc%20design.jpg"
-              alt="Crown Collective Creative - Chess King with AI circuits"
-              className="relative z-10 w-full max-w-md object-contain"
-              style={{
-                filter: 'drop-shadow(0 0 30px rgba(59, 130, 246, 0.3)) drop-shadow(0 0 60px rgba(212, 175, 55, 0.2))'
-              }}
-            />
+              <div className="absolute inset-0 bg-blue-600/10 blur-[80px] rounded-full"></div>
+              <div className="absolute inset-0 bg-yellow-500/5 blur-[100px] rounded-full translate-y-10"></div>
+              <img 
+                src="https://customer-assets.emergentagent.com/job_crown-services/artifacts/05u4v7po_ccc%20design.jpg"
+                alt="Crown Collective Creative - Chess King with AI circuits"
+                className="relative z-10 w-full max-w-md object-contain"
+                style={{
+                  filter: 'drop-shadow(0 0 30px rgba(59, 130, 246, 0.3)) drop-shadow(0 0 60px rgba(212, 175, 55, 0.2))'
+                }}
+              />
+            </div>
           </div>
         </div>
       </section>
