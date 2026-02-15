@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException, Depends
 from bson import ObjectId
 from datetime import datetime
+import os
 from config.database import get_db
 from middleware.auth import (
     hash_password, 
@@ -112,10 +113,11 @@ async def forgot_password(request: ForgotPasswordRequest):
             "used": False
         })
         # Send reset email (mock mode)
+        frontend_url = os.environ.get("FRONTEND_URL", "https://crowncollective.com")
         await email_service.send_password_reset(
             request.email, 
             reset_token, 
-            "https://crowncollective.com/reset-password"
+            f"{frontend_url}/reset-password"
         )
     
     return {"message": "If your email exists, you will receive a reset link"}
