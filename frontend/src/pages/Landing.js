@@ -279,11 +279,22 @@ export default function Landing() {
               {t.heroSub}
             </p>
             
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8">
-              <a href="#inquiry" className="px-12 py-5 bg-[#D4AF37] text-black text-[11px] font-black uppercase tracking-[0.2em] hover:bg-white transition-colors shadow-2xl shadow-yellow-500/10 w-full sm:w-auto text-center" data-testid="hero-cta-btn">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+              <a 
+                href="https://forms.gle/oLKR3vLosFSWkywF9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-12 py-5 bg-[#D4AF37] text-black text-[11px] font-black uppercase tracking-[0.2em] hover:bg-white transition-colors shadow-2xl shadow-yellow-500/10 w-full sm:w-auto text-center flex items-center justify-center gap-3"
+                data-testid="hero-inquire-btn"
+              >
+                <ArrowUpRight className="w-4 h-4" />
+                Inquire
+              </a>
+              <a href="#inquiry" className="px-10 py-5 border-2 border-white/20 text-white text-[11px] font-black uppercase tracking-[0.2em] hover:border-blue-500/50 hover:bg-blue-500/5 transition-colors w-full sm:w-auto text-center" data-testid="hero-cta-btn">
                 {t.heroCta}
               </a>
-              <div className="flex items-center gap-3">
+            </div>
+            <div className="flex items-center gap-3 mt-8">
                 <div className="w-10 h-10 flex items-center justify-center rounded-full border border-blue-500/20">
                   <Trophy className="w-4 h-4 text-blue-500" />
                 </div>
