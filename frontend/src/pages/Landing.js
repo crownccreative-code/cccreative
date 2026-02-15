@@ -475,7 +475,7 @@ export default function Landing() {
       </section>
 
       {/* Footer */}
-      <footer className="py-16 px-6 border-t border-white/5 bg-[#050505] text-left">
+      <footer className="py-16 px-6 border-t border-white/5 bg-[#050505] text-left pb-28 sm:pb-16">
         <div className="max-w-7xl mx-auto flex flex-col items-start md:items-center gap-10">
           <div className="flex flex-col items-start md:items-center gap-4">
             <Crown className="w-8 h-8 text-[#D4AF37]" />
@@ -488,6 +488,20 @@ export default function Landing() {
           </div>
         </div>
       </footer>
+
+      {/* Sticky Mobile Inquire Button */}
+      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-50 p-4 bg-gradient-to-t from-[#050505] via-[#050505]/95 to-transparent">
+        <a 
+          href="https://forms.gle/oLKR3vLosFSWkywF9"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-3 w-full py-4 bg-[#D4AF37] text-black text-[11px] font-black uppercase tracking-[0.2em] hover:bg-white transition-colors shadow-2xl shadow-yellow-500/30 rounded-lg"
+          data-testid="mobile-inquire-btn"
+        >
+          <ArrowUpRight className="w-4 h-4" />
+          Inquire Now
+        </a>
+      </div>
     </div>
   );
 }
