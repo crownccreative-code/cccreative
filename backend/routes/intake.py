@@ -2,12 +2,15 @@ from fastapi import APIRouter, HTTPException, Depends, Query
 from bson import ObjectId
 from datetime import datetime
 from typing import Optional, List
+import os
 from config.database import get_db
 from middleware.auth import get_current_user, require_admin
 from models.intake import IntakeCreate, IntakeResponse, IntakeType
 from services.email_service import email_service
 
 router = APIRouter(prefix="/api/intake", tags=["Intake Forms"])
+
+ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL", "admin@crowncollective.com")
 
 @router.post("", response_model=IntakeResponse)
 async def create_intake(intake: IntakeCreate, current_user: dict = Depends(get_current_user)):
@@ -33,7 +36,7 @@ async def create_intake(intake: IntakeCreate, current_user: dict = Depends(get_c
     
     # Send notification to admin
     await email_service.send_intake_notification(
-        "admin@crowncollective.com",
+        ADMIN_EMAIL,
         intake.type,
         current_user["name"]
     )
