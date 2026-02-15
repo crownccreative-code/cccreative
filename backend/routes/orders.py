@@ -35,16 +35,26 @@ async def get_order_with_items(db, order_id: str, check_user: str = None):
     
     # Get items
     items = await db.order_items.find({"order_id": order_id}).to_list(100)
+    
+    # Batch fetch all services and packages to avoid N+1 queries
+    service_ids = [ObjectId(item["service_id"]) for item in items if item.get("service_id")]
+    package_ids = [ObjectId(item["package_id"]) for item in items if item.get("package_id")]
+    
+    services_map = {}
+    packages_map = {}
+    
+    if service_ids:
+        services = await db.services.find({"_id": {"$in": service_ids}}).to_list(100)
+        services_map = {str(s["_id"]): s["name"] for s in services}
+    
+    if package_ids:
+        packages = await db.packages.find({"_id": {"$in": package_ids}}).to_list(100)
+        packages_map = {str(p["_id"]): p["name"] for p in packages}
+    
     item_responses = []
     for item in items:
-        service_name = None
-        package_name = None
-        if item.get("service_id"):
-            service = await db.services.find_one({"_id": ObjectId(item["service_id"])})
-            service_name = service["name"] if service else None
-        if item.get("package_id"):
-            package = await db.packages.find_one({"_id": ObjectId(item["package_id"])})
-            package_name = package["name"] if package else None
+        service_name = services_map.get(item.get("service_id")) if item.get("service_id") else None
+        package_name = packages_map.get(item.get("package_id")) if item.get("package_id") else None
         
         item_responses.append(OrderItemResponse(
             id=str(item["_id"]),
