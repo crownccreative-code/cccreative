@@ -209,17 +209,6 @@ export default function Landing() {
                         <ChevronRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                       </a>
                     ))}
-                    <div className="sm:hidden mt-4 pt-4 border-t border-white/5">
-                      {user ? (
-                        <Link to={user.role === 'admin' ? '/admin' : '/portal'} onClick={() => setMenuOpen(false)} className="block w-full py-4 text-center bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest rounded-lg">
-                          Go to {user.role === 'admin' ? 'Admin' : 'Portal'}
-                        </Link>
-                      ) : (
-                        <Link to="/login" onClick={() => setMenuOpen(false)} className="block w-full py-4 text-center bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest rounded-lg">
-                          Login
-                        </Link>
-                      )}
-                    </div>
                   </div>
                 </div>
               )}
