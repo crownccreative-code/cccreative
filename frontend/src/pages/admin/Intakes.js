@@ -158,8 +158,9 @@ export default function AdminIntakes() {
                 ))}
               </div>
             </div>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </div>
   );
