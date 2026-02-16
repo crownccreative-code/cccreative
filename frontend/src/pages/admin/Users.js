@@ -178,25 +178,6 @@ export default function AdminUsers() {
                     </td>
                     <td>
                       <div className="flex items-center gap-2">
-                        {user.role === 'admin' ? (
-                          <button
-                            onClick={() => handleRoleChange(user.id, 'client')}
-                            className="p-2 text-yellow-400 hover:bg-yellow-500/10 rounded-lg transition-colors"
-                            title="Demote to client"
-                            data-testid={`demote-user-${user.id}`}
-                          >
-                            <ShieldOff className="w-4 h-4" />
-                          </button>
-                        ) : (
-                          <button
-                            onClick={() => handleRoleChange(user.id, 'admin')}
-                            className="p-2 text-blue-400 hover:bg-blue-500/10 rounded-lg transition-colors"
-                            title="Promote to admin"
-                            data-testid={`promote-user-${user.id}`}
-                          >
-                            <Shield className="w-4 h-4" />
-                          </button>
-                        )}
                         <button
                           onClick={() => handleDeleteUser(user.id, user.name)}
                           className="p-2 text-red-400 hover:bg-red-500/10 rounded-lg transition-colors"
