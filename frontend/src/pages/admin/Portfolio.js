@@ -178,25 +178,14 @@ export default function AdminPortfolio() {
           <p className="text-slate-500 text-sm">Upload your first portfolio item above</p>
         </div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {items.map((item, idx) => (
             <div
               key={item.id}
               className="relative"
               data-testid={`portfolio-item-${item.id}`}
             >
-              {/* Delete Button - Positioned outside card overflow */}
-              <button
-                onClick={(e) => { e.stopPropagation(); handleDelete(item.id); }}
-                className="absolute -top-2 -right-2 p-2 bg-red-600 hover:bg-red-500 rounded-full text-white transition-all shadow-xl hover:scale-110 border-2 border-[#0A0A0A]"
-                style={{ zIndex: 30 }}
-                data-testid={`delete-portfolio-${item.id}`}
-                title="Delete item"
-              >
-                <Trash2 className="w-4 h-4" />
-              </button>
-
-              <div className="card group aspect-square overflow-hidden">
+              <div className="card group aspect-square overflow-hidden relative">
                 {item.mime_type?.startsWith('video/') ? (
                   <video
                     src={item.url}
@@ -227,6 +216,17 @@ export default function AdminPortfolio() {
                     </span>
                   )}
                 </div>
+
+                {/* Delete Button - Top right inside card */}
+                <button
+                  onClick={(e) => { e.stopPropagation(); handleDelete(item.id); }}
+                  className="absolute top-3 right-3 p-2 bg-red-600 hover:bg-red-500 rounded-full text-white transition-all shadow-xl hover:scale-110"
+                  style={{ zIndex: 20 }}
+                  data-testid={`delete-portfolio-${item.id}`}
+                  title="Delete item"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
 
                 {/* Info */}
                 <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
