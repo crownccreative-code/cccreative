@@ -199,19 +199,45 @@ export default function AdminUsers() {
       {/* Create Client Modal */}
       {showCreateModal && createPortal(
         <div 
-          className="fixed inset-0 flex items-center justify-center" 
-          style={{ zIndex: 9999 }}
+          style={{ 
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 99999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '1rem'
+          }}
         >
           <div 
-            className="fixed inset-0 bg-black/85"
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.85)'
+            }}
             onClick={() => setShowCreateModal(false)}
           />
           
           <div 
-            className="relative bg-[#0A0A0A] border border-white/10 rounded-2xl w-full max-w-md mx-4 overflow-hidden shadow-2xl"
+            style={{
+              position: 'relative',
+              backgroundColor: '#1a1a1a',
+              border: '1px solid rgba(255, 255, 255, 0.15)',
+              borderRadius: '1rem',
+              width: '100%',
+              maxWidth: '28rem',
+              overflow: 'hidden',
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
+            }}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="p-6 border-b border-white/5 flex items-center justify-between">
+            <div className="p-6 border-b border-white/10 flex items-center justify-between" style={{ backgroundColor: '#222' }}>
               <h2 className="text-xl font-bold uppercase tracking-tight text-white">Create New Client</h2>
               <button 
                 onClick={() => setShowCreateModal(false)} 
