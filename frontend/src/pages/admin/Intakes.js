@@ -103,65 +103,62 @@ export default function AdminIntakes() {
         </div>
       )}
 
-      {/* Intake Detail Modal */}
-      {selectedIntake && (
-        <>
-          {/* Full screen overlay */}
+      {/* Intake Detail Modal - Using Portal to render at document body level */}
+      {selectedIntake && createPortal(
+        <div className="fixed inset-0" style={{ zIndex: 9999 }}>
+          {/* Overlay */}
           <div 
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm"
-            style={{ zIndex: 100 }}
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
             onClick={() => setSelectedIntake(null)}
           />
           {/* Modal content */}
-          <div 
-            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl max-h-[90vh] p-4"
-            style={{ zIndex: 101 }}
-          >
-            <div className="bg-[#0A0A0A] border border-white/10 rounded-2xl overflow-hidden">
+          <div className="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+            <div className="bg-[#0A0A0A] border border-white/10 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden pointer-events-auto">
               <div className="p-6 border-b border-white/5 flex items-center justify-between">
                 <div>
                   <span className={`badge badge-${getTypeBadge(selectedIntake.type)} mb-2`}>
                     {selectedIntake.type}
                   </span>
-                  <h2 className="text-xl font-bold uppercase tracking-tight">Intake Form</h2>
+                  <h2 className="text-xl font-bold uppercase tracking-tight text-white">Intake Form</h2>
                 </div>
                 <button 
                   onClick={() => setSelectedIntake(null)} 
-                  className="text-slate-500 hover:text-white transition-colors text-2xl"
+                  className="p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
                   data-testid="close-intake-modal"
                 >
-                  ×
+                  <X className="w-5 h-5" />
                 </button>
               </div>
             
-            <div className="p-6 overflow-y-auto max-h-[70vh]">
-              {/* Customer Info */}
-              <div className="mb-6 p-4 bg-white/5 rounded-xl">
-                <h4 className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-2">Submitted By</h4>
-                <p className="font-semibold">{selectedIntake.user_name}</p>
-                <p className="text-sm text-slate-400">{selectedIntake.user_email}</p>
-                <p className="text-xs text-slate-500 mt-2">
-                  {new Date(selectedIntake.created_at).toLocaleString()}
-                </p>
-              </div>
+              <div className="p-6 overflow-y-auto max-h-[70vh]">
+                {/* Customer Info */}
+                <div className="mb-6 p-4 bg-white/5 rounded-xl">
+                  <h4 className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-2">Submitted By</h4>
+                  <p className="font-semibold text-white">{selectedIntake.user_name}</p>
+                  <p className="text-sm text-slate-400">{selectedIntake.user_email}</p>
+                  <p className="text-xs text-slate-500 mt-2">
+                    {new Date(selectedIntake.created_at).toLocaleString()}
+                  </p>
+                </div>
 
-              {/* Answers */}
-              <div className="space-y-6">
-                {Object.entries(selectedIntake.answers || {}).map(([key, value]) => (
-                  <div key={key}>
-                    <h4 className="text-[10px] font-mono text-blue-400 uppercase tracking-widest mb-2">
-                      {key.replace(/_/g, ' ')}
-                    </h4>
-                    <p className="text-sm text-slate-300 whitespace-pre-wrap bg-white/5 p-3 rounded-lg">
-                      {value}
-                    </p>
-                  </div>
-                ))}
+                {/* Answers */}
+                <div className="space-y-6">
+                  {Object.entries(selectedIntake.answers || {}).map(([key, value]) => (
+                    <div key={key}>
+                      <h4 className="text-[10px] font-mono text-blue-400 uppercase tracking-widest mb-2">
+                        {key.replace(/_/g, ' ')}
+                      </h4>
+                      <p className="text-sm text-slate-300 whitespace-pre-wrap bg-white/5 p-3 rounded-lg">
+                        {value}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
             </div>
           </div>
-        </>
+        </div>,
+        document.body
       )}
     </div>
   );
