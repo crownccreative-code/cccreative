@@ -185,27 +185,6 @@ export default function Landing() {
               Inquire
             </a>
 
-            {/* Auth/Portal Button */}
-            {user ? (
-              <Link 
-                to={user.role === 'admin' ? '/admin' : '/portal'}
-                className="hidden md:flex items-center gap-2 px-6 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-bold uppercase tracking-widest transition-colors rounded-sm shadow-lg shadow-blue-600/20"
-                data-testid="portal-btn"
-              >
-                <LogIn className="w-3 h-3" />
-                {user.role === 'admin' ? 'Admin' : 'Portal'}
-              </Link>
-            ) : (
-              <Link 
-                to="/login"
-                className="hidden md:flex items-center gap-2 px-6 py-2.5 border border-white/20 hover:border-blue-500/50 text-white text-[10px] font-bold uppercase tracking-widest transition-colors rounded-sm"
-                data-testid="login-btn"
-              >
-                <LogIn className="w-3 h-3" />
-                Login
-              </Link>
-            )}
-
             {/* Mobile Menu */}
             <div className="relative" ref={menuRef}>
               <button 
