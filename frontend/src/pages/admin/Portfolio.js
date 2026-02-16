@@ -203,10 +203,11 @@ export default function AdminPortfolio() {
                 />
               )}
               
-              {/* Delete Button - Always visible in top right */}
+              {/* Delete Button - Always visible in top right corner */}
               <button
-                onClick={() => handleDelete(item.id)}
-                className="absolute top-2 right-2 p-2 bg-red-500/80 hover:bg-red-500 rounded-lg text-white transition-colors shadow-lg z-10"
+                onClick={(e) => { e.stopPropagation(); handleDelete(item.id); }}
+                className="absolute top-3 right-3 p-2.5 bg-red-600 hover:bg-red-500 rounded-full text-white transition-all shadow-lg hover:scale-110"
+                style={{ zIndex: 20 }}
                 data-testid={`delete-portfolio-${item.id}`}
                 title="Delete item"
               >
@@ -214,7 +215,7 @@ export default function AdminPortfolio() {
               </button>
 
               {/* Type Badge */}
-              <div className="absolute top-2 left-2">
+              <div className="absolute top-3 left-3" style={{ zIndex: 10 }}>
                 {item.mime_type?.startsWith('video/') ? (
                   <span className="badge badge-default">
                     <Video className="w-3 h-3 mr-1" /> Video
