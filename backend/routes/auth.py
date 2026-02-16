@@ -155,3 +155,28 @@ async def reset_password(request: ResetPasswordRequest):
     )
     
     return {"message": "Password reset successful"}
+
+@router.post("/change-password")
+async def change_password(request: ChangePasswordRequest, current_user: dict = Depends(get_current_user)):
+    """Change password for logged in user"""
+    db = get_db()
+    
+    # Get user from database
+    user = await db.users.find_one({"_id": ObjectId(current_user["id"])})
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    
+    # Verify current password
+    if not verify_password(request.current_password, user["password_hash"]):
+        raise HTTPException(status_code=400, detail="Current password is incorrect")
+    
+    # Update password
+    await db.users.update_one(
+        {"_id": user["_id"]},
+        {"$set": {
+            "password_hash": hash_password(request.new_password),
+            "updated_at": datetime.utcnow()
+        }}
+    )
+    
+    return {"message": "Password changed successfully"}
