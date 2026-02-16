@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { FileText, Eye, Filter } from 'lucide-react';
+import { createPortal } from 'react-dom';
+import { FileText, Eye, Filter, X } from 'lucide-react';
 import api from '../../api/client';
 import { toast } from 'sonner';
 
