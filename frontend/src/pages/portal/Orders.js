@@ -162,17 +162,59 @@ export default function PortalOrders() {
       )}
 
       {/* Create Order Modal */}
-      {showCreate && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="bg-[#0A0A0A] border border-white/10 rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-hidden">
+      {showCreate && createPortal(
+        <div 
+          style={{ 
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 99999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '1rem'
+          }}
+        >
+          {/* Dark overlay */}
+          <div 
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.9)'
+            }}
+            onClick={() => setShowCreate(false)}
+          />
+          
+          {/* Modal */}
+          <div 
+            style={{
+              position: 'relative',
+              backgroundColor: '#0A0A0A',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              borderRadius: '1rem',
+              width: '100%',
+              maxWidth: '48rem',
+              maxHeight: '90vh',
+              overflow: 'hidden'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="p-6 border-b border-white/5 flex items-center justify-between">
-              <h2 className="text-xl font-bold uppercase tracking-tight">Create New Order</h2>
-              <button onClick={() => setShowCreate(false)} className="text-slate-500 hover:text-white transition-colors">
-                <Trash2 className="w-5 h-5" />
+              <h2 className="text-xl font-bold uppercase tracking-tight text-white">Create New Order</h2>
+              <button 
+                onClick={() => setShowCreate(false)} 
+                className="p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+              >
+                <X className="w-5 h-5" />
               </button>
             </div>
             
-            <div className="p-6 overflow-y-auto max-h-[60vh]">
+            <div className="p-6 overflow-y-auto" style={{ maxHeight: '60vh' }}>
               {/* Services */}
               <div className="mb-8">
                 <h3 className="text-sm font-mono text-slate-500 uppercase tracking-widest mb-4">Services</h3>
@@ -190,7 +232,7 @@ export default function PortalOrders() {
                         }`}
                         data-testid={`service-${service.id}`}
                       >
-                        <p className="font-semibold mb-1">{service.name}</p>
+                        <p className="font-semibold mb-1 text-white">{service.name}</p>
                         <p className="text-sm text-slate-500 mb-2 line-clamp-2">{service.description}</p>
                         <p className="text-lg font-bold text-blue-400">${service.base_price?.toFixed(2)}</p>
                       </button>
@@ -217,7 +259,7 @@ export default function PortalOrders() {
                         data-testid={`package-${pkg.id}`}
                       >
                         <span className="badge badge-gold mb-2">{pkg.tier}</span>
-                        <p className="font-semibold mb-2">{pkg.name}</p>
+                        <p className="font-semibold mb-2 text-white">{pkg.name}</p>
                         <p className="text-xl font-bold text-[#D4AF37]">${pkg.price?.toFixed(2)}</p>
                       </button>
                     );
@@ -230,7 +272,7 @@ export default function PortalOrders() {
             <div className="p-6 border-t border-white/5 flex items-center justify-between">
               <div>
                 <p className="text-sm text-slate-500">Selected: {selectedItems.length} item(s)</p>
-                <p className="text-xl font-bold">
+                <p className="text-xl font-bold text-white">
                   Total: ${selectedItems.reduce((sum, item) => sum + (item.base_price || item.price || 0), 0).toFixed(2)}
                 </p>
               </div>
@@ -256,7 +298,8 @@ export default function PortalOrders() {
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
