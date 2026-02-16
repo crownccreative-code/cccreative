@@ -174,13 +174,31 @@ export default function AdminOrders() {
       </div>
 
       {/* Order Detail Modal */}
-      {selectedOrder && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="bg-[#0A0A0A] border border-white/10 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden">
+      {selectedOrder && createPortal(
+        <div 
+          className="fixed inset-0 flex items-center justify-center" 
+          style={{ zIndex: 9999 }}
+        >
+          {/* Dark overlay */}
+          <div 
+            className="fixed inset-0 bg-black/85"
+            onClick={() => setSelectedOrder(null)}
+            aria-hidden="true"
+          />
+          
+          {/* Modal container */}
+          <div 
+            className="relative bg-[#0A0A0A] border border-white/10 rounded-2xl w-full max-w-2xl mx-4 max-h-[90vh] overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="p-6 border-b border-white/5 flex items-center justify-between">
-              <h2 className="text-xl font-bold uppercase tracking-tight">Order #{selectedOrder.id.slice(-6)}</h2>
-              <button onClick={() => setSelectedOrder(null)} className="text-slate-500 hover:text-white transition-colors">
-                ×
+              <h2 className="text-xl font-bold uppercase tracking-tight text-white">Order #{selectedOrder.id.slice(-6)}</h2>
+              <button 
+                onClick={() => setSelectedOrder(null)} 
+                className="p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                data-testid="close-order-modal"
+              >
+                <X className="w-5 h-5" />
               </button>
             </div>
             
@@ -188,7 +206,7 @@ export default function AdminOrders() {
               {/* Customer Info */}
               <div className="mb-6">
                 <h4 className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-2">Customer</h4>
-                <p className="font-semibold">{selectedOrder.user_name}</p>
+                <p className="font-semibold text-white">{selectedOrder.user_name}</p>
                 <p className="text-sm text-slate-400">{selectedOrder.user_email}</p>
               </div>
 
@@ -198,8 +216,8 @@ export default function AdminOrders() {
                 <div className="space-y-2">
                   {selectedOrder.items?.map(item => (
                     <div key={item.id} className="flex justify-between p-3 bg-white/5 rounded-lg">
-                      <span>{item.service_name || item.package_name}</span>
-                      <span className="font-bold">${item.line_total?.toFixed(2)}</span>
+                      <span className="text-white">{item.service_name || item.package_name}</span>
+                      <span className="font-bold text-white">${item.line_total?.toFixed(2)}</span>
                     </div>
                   ))}
                 </div>
@@ -209,11 +227,11 @@ export default function AdminOrders() {
               <div className="border-t border-white/5 pt-4">
                 <div className="flex justify-between mb-2">
                   <span className="text-slate-500">Subtotal</span>
-                  <span>${selectedOrder.subtotal?.toFixed(2)}</span>
+                  <span className="text-white">${selectedOrder.subtotal?.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-lg font-bold">
-                  <span>Total</span>
-                  <span>${selectedOrder.total?.toFixed(2)}</span>
+                  <span className="text-white">Total</span>
+                  <span className="text-white">${selectedOrder.total?.toFixed(2)}</span>
                 </div>
               </div>
 
@@ -225,7 +243,8 @@ export default function AdminOrders() {
               )}
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
