@@ -127,12 +127,6 @@ export default function Login() {
             </p>
           </div>
         </div>
-
-        {/* Demo Credentials */}
-        <div className="mt-6 p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl">
-          <p className="text-[10px] font-mono text-blue-400 uppercase tracking-widest mb-2">Demo Admin Credentials</p>
-          <p className="text-sm text-slate-400">admin@crowncollective.com / admin123</p>
-        </div>
       </div>
     </div>
   );
