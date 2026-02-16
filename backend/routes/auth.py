@@ -2,6 +2,7 @@ from fastapi import APIRouter, HTTPException, Depends
 from bson import ObjectId
 from datetime import datetime
 import os
+from pydantic import BaseModel
 from config.database import get_db
 from middleware.auth import (
     hash_password, 
@@ -23,6 +24,10 @@ from services.email_service import email_service
 import secrets
 
 router = APIRouter(prefix="/api/auth", tags=["Authentication"])
+
+class ChangePasswordRequest(BaseModel):
+    current_password: str
+    new_password: str
 
 @router.post("/register", response_model=TokenResponse)
 async def register(user_data: UserCreate):
