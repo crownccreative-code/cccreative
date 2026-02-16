@@ -23,7 +23,7 @@ import { useAuth } from '../context/AuthContext';
 import api from '../api/client';
 import { toast } from 'sonner';
 
-const CCC_ADMIN_EMAIL = 'crownccreative@gmail.com';
+const CCC_ADMIN_EMAIL = 'crownccreative@outlook.com';
 
 export default function CCCAdmin() {
   const navigate = useNavigate();
