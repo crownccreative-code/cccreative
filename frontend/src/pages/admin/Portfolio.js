@@ -182,55 +182,57 @@ export default function AdminPortfolio() {
           {items.map((item, idx) => (
             <div
               key={item.id}
-              className="card group relative aspect-square overflow-hidden"
+              className="relative"
               data-testid={`portfolio-item-${item.id}`}
             >
-              {item.mime_type?.startsWith('video/') ? (
-                <video
-                  src={item.url}
-                  className="w-full h-full object-cover"
-                  muted
-                  loop
-                  onMouseEnter={(e) => e.target.play()}
-                  onMouseLeave={(e) => { e.target.pause(); e.target.currentTime = 0; }}
-                />
-              ) : (
-                <img
-                  src={item.url}
-                  alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                  style={{ transitionDuration: '500ms' }}
-                />
-              )}
-              
-              {/* Delete Button - Always visible in top right corner */}
+              {/* Delete Button - Positioned outside card overflow */}
               <button
                 onClick={(e) => { e.stopPropagation(); handleDelete(item.id); }}
-                className="absolute top-3 right-3 p-2.5 bg-red-600 hover:bg-red-500 rounded-full text-white transition-all shadow-lg hover:scale-110"
-                style={{ zIndex: 20 }}
+                className="absolute -top-2 -right-2 p-2 bg-red-600 hover:bg-red-500 rounded-full text-white transition-all shadow-xl hover:scale-110 border-2 border-[#0A0A0A]"
+                style={{ zIndex: 30 }}
                 data-testid={`delete-portfolio-${item.id}`}
                 title="Delete item"
               >
                 <Trash2 className="w-4 h-4" />
               </button>
 
-              {/* Type Badge */}
-              <div className="absolute top-3 left-3" style={{ zIndex: 10 }}>
+              <div className="card group aspect-square overflow-hidden">
                 {item.mime_type?.startsWith('video/') ? (
-                  <span className="badge badge-default">
-                    <Video className="w-3 h-3 mr-1" /> Video
-                  </span>
+                  <video
+                    src={item.url}
+                    className="w-full h-full object-cover"
+                    muted
+                    loop
+                    onMouseEnter={(e) => e.target.play()}
+                    onMouseLeave={(e) => { e.target.pause(); e.target.currentTime = 0; }}
+                  />
                 ) : (
-                  <span className="badge badge-default">
-                    <Image className="w-3 h-3 mr-1" /> Image
-                  </span>
+                  <img
+                    src={item.url}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                    style={{ transitionDuration: '500ms' }}
+                  />
                 )}
-              </div>
 
-              {/* Info */}
-              <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
-                <p className="text-sm font-semibold truncate">{item.title}</p>
-                <p className="text-xs text-slate-400">{formatSize(item.size)}</p>
+                {/* Type Badge */}
+                <div className="absolute top-3 left-3" style={{ zIndex: 10 }}>
+                  {item.mime_type?.startsWith('video/') ? (
+                    <span className="badge badge-default">
+                      <Video className="w-3 h-3 mr-1" /> Video
+                    </span>
+                  ) : (
+                    <span className="badge badge-default">
+                      <Image className="w-3 h-3 mr-1" /> Image
+                    </span>
+                  )}
+                </div>
+
+                {/* Info */}
+                <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
+                  <p className="text-sm font-semibold truncate">{item.title}</p>
+                  <p className="text-xs text-slate-400">{formatSize(item.size)}</p>
+                </div>
               </div>
             </div>
           ))}
