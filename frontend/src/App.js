@@ -96,6 +96,7 @@ function App() {
         <Route path="intakes" element={<AdminIntakes />} />
         <Route path="portfolio" element={<AdminPortfolio />} />
         <Route path="users" element={<AdminUsers />} />
+        <Route path="settings" element={<AdminSettings />} />
       </Route>
 
       {/* Fallback */}
