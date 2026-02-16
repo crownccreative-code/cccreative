@@ -284,6 +284,17 @@ class ApiClient {
     return this.request(`/api/admin/users/${userId}/role?role=${role}`, { method: 'PATCH' });
   }
 
+  async deleteUser(userId) {
+    return this.request(`/api/admin/users/${userId}`, { method: 'DELETE' });
+  }
+
+  async createClient(data) {
+    return this.request('/api/admin/users/create-client', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+  }
+
   async getStats() {
     return this.request('/api/admin/stats');
   }
