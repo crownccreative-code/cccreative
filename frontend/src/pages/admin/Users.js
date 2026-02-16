@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Users, Search, Shield, ShieldOff, UserPlus, Trash2, X } from 'lucide-react';
+import { Users, Search, UserPlus, Trash2, X } from 'lucide-react';
 import api from '../../api/client';
 import { toast } from 'sonner';
 
