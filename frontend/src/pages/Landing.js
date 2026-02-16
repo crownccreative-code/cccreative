@@ -466,7 +466,7 @@ export default function Landing() {
       </section>
 
       {/* Footer */}
-      <footer className="py-16 px-6 border-t border-white/5 bg-[#050505] text-left pb-28 sm:pb-16">
+      <footer className="py-16 px-6 border-t border-white/5 bg-[#050505] text-left">
         <div className="max-w-7xl mx-auto flex flex-col items-start md:items-center gap-10">
           <div className="flex flex-col items-start md:items-center gap-4">
             <Crown className="w-8 h-8 text-[#D4AF37]" />
