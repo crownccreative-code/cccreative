@@ -206,7 +206,10 @@ export default function Landing() {
               </button>
 
               {menuOpen && (
-                <div className="absolute top-full right-0 mt-4 w-56 bg-[#0D0D0D] border border-white/10 rounded-2xl shadow-2xl p-4 overflow-hidden animate-fadeIn" style={{ minWidth: '200px', maxWidth: 'calc(100vw - 2rem)' }}>
+                <div 
+                  className="absolute top-full mt-4 bg-[#0D0D0D] border border-white/10 rounded-2xl shadow-2xl p-4 overflow-hidden animate-fadeIn"
+                  style={{ right: '-1rem', width: '220px' }}
+                >
                   <div className="flex flex-col gap-2">
                     {/* Inquire Link */}
                     <a 
@@ -214,19 +217,19 @@ export default function Landing() {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => setMenuOpen(false)}
-                      className="flex justify-between items-center px-5 py-4 rounded-xl text-[11px] font-bold uppercase tracking-[0.15em] text-[#D4AF37] hover:text-white hover:bg-white/5 transition-colors group"
+                      className="flex justify-between items-center px-4 py-4 rounded-xl text-[11px] font-bold uppercase tracking-[0.1em] text-[#D4AF37] hover:text-white hover:bg-white/5 transition-colors group"
                     >
                       Inquire
-                      <ArrowUpRight className="w-3 h-3" />
+                      <ArrowUpRight className="w-3 h-3 flex-shrink-0" />
                     </a>
                     {/* Client Portal Link */}
                     <Link 
                       to="/login"
                       onClick={() => setMenuOpen(false)}
-                      className="flex justify-between items-center px-5 py-4 rounded-xl text-[11px] font-bold uppercase tracking-[0.15em] text-slate-400 hover:text-white hover:bg-white/5 transition-colors group"
+                      className="flex justify-between items-center px-4 py-4 rounded-xl text-[11px] font-bold uppercase tracking-[0.1em] text-slate-400 hover:text-white hover:bg-white/5 transition-colors group"
                     >
                       Client Portal
-                      <ChevronRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ChevronRight className="w-3 h-3 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </Link>
                   </div>
                 </div>
