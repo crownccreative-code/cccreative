@@ -13,7 +13,7 @@ import uuid
 router = APIRouter(prefix="/api/client-projects", tags=["Client Projects"])
 
 # CCC Admin email - only this email can access admin features
-CCC_ADMIN_EMAIL = "crownccreative@gmail.com"
+CCC_ADMIN_EMAIL = "crownccreative@outlook.com"
 
 def require_ccc_admin(current_user: dict = Depends(get_current_user)):
     """Require the specific CCC admin email"""
