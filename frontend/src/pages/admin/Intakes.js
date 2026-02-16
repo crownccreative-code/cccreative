@@ -104,7 +104,7 @@ export default function AdminIntakes() {
 
       {/* Intake Detail Modal */}
       {selectedIntake && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+        <div className="fixed inset-0 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" style={{ zIndex: 100 }}>
           <div className="bg-[#0A0A0A] border border-white/10 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden">
             <div className="p-6 border-b border-white/5 flex items-center justify-between">
               <div>
@@ -113,7 +113,11 @@ export default function AdminIntakes() {
                 </span>
                 <h2 className="text-xl font-bold uppercase tracking-tight">Intake Form</h2>
               </div>
-              <button onClick={() => setSelectedIntake(null)} className="text-slate-500 hover:text-white transition-colors text-2xl">
+              <button 
+                onClick={() => setSelectedIntake(null)} 
+                className="text-slate-500 hover:text-white transition-colors text-2xl"
+                data-testid="close-intake-modal"
+              >
                 ×
               </button>
             </div>
