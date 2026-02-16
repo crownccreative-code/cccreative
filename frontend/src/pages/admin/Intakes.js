@@ -106,19 +106,46 @@ export default function AdminIntakes() {
       {/* Intake Detail Modal - Using Portal to render at document body level */}
       {selectedIntake && createPortal(
         <div 
-          className="fixed inset-0 flex items-center justify-center" 
-          style={{ zIndex: 9999 }}
+          style={{ 
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 99999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '1rem'
+          }}
         >
           {/* Dark overlay */}
           <div 
-            className="fixed inset-0 bg-black/85"
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.9)'
+            }}
             onClick={() => setSelectedIntake(null)}
             aria-hidden="true"
           />
           
           {/* Modal container */}
           <div 
-            className="relative bg-[#0A0A0A] border border-white/10 rounded-2xl w-full max-w-2xl mx-4 max-h-[90vh] overflow-hidden shadow-2xl"
+            style={{
+              position: 'relative',
+              backgroundColor: '#0A0A0A',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              borderRadius: '1rem',
+              width: '100%',
+              maxWidth: '42rem',
+              maxHeight: '90vh',
+              overflow: 'hidden',
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
+            }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
@@ -139,7 +166,7 @@ export default function AdminIntakes() {
             </div>
           
             {/* Content */}
-            <div className="p-6 overflow-y-auto max-h-[70vh]">
+            <div className="p-6 overflow-y-auto" style={{ maxHeight: '70vh' }}>
               {/* Customer Info */}
               <div className="mb-6 p-4 bg-white/5 rounded-xl">
                 <h4 className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-2">Submitted By</h4>
