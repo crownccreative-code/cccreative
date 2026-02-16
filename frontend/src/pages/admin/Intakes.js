@@ -104,23 +104,34 @@ export default function AdminIntakes() {
 
       {/* Intake Detail Modal */}
       {selectedIntake && (
-        <div className="fixed inset-0 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" style={{ zIndex: 100 }}>
-          <div className="bg-[#0A0A0A] border border-white/10 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden">
-            <div className="p-6 border-b border-white/5 flex items-center justify-between">
-              <div>
-                <span className={`badge badge-${getTypeBadge(selectedIntake.type)} mb-2`}>
-                  {selectedIntake.type}
-                </span>
-                <h2 className="text-xl font-bold uppercase tracking-tight">Intake Form</h2>
+        <>
+          {/* Full screen overlay */}
+          <div 
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm"
+            style={{ zIndex: 100 }}
+            onClick={() => setSelectedIntake(null)}
+          />
+          {/* Modal content */}
+          <div 
+            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl max-h-[90vh] p-4"
+            style={{ zIndex: 101 }}
+          >
+            <div className="bg-[#0A0A0A] border border-white/10 rounded-2xl overflow-hidden">
+              <div className="p-6 border-b border-white/5 flex items-center justify-between">
+                <div>
+                  <span className={`badge badge-${getTypeBadge(selectedIntake.type)} mb-2`}>
+                    {selectedIntake.type}
+                  </span>
+                  <h2 className="text-xl font-bold uppercase tracking-tight">Intake Form</h2>
+                </div>
+                <button 
+                  onClick={() => setSelectedIntake(null)} 
+                  className="text-slate-500 hover:text-white transition-colors text-2xl"
+                  data-testid="close-intake-modal"
+                >
+                  ×
+                </button>
               </div>
-              <button 
-                onClick={() => setSelectedIntake(null)} 
-                className="text-slate-500 hover:text-white transition-colors text-2xl"
-                data-testid="close-intake-modal"
-              >
-                ×
-              </button>
-            </div>
             
             <div className="p-6 overflow-y-auto max-h-[70vh]">
               {/* Customer Info */}
