@@ -2,11 +2,72 @@ from fastapi import APIRouter, HTTPException, Depends, Query
 from bson import ObjectId
 from datetime import datetime
 from typing import Optional, List
+from pydantic import BaseModel, EmailStr
 from config.database import get_db
-from middleware.auth import require_admin
+from middleware.auth import require_admin, hash_password
 from models.user import UserResponse, UserRole
 
 router = APIRouter(prefix="/api/admin", tags=["Admin"])
+
+class CreateClientRequest(BaseModel):
+    name: str
+    email: EmailStr
+    password: str
+
+@router.post("/users/create-client", response_model=UserResponse)
+async def create_client(request: CreateClientRequest, admin: dict = Depends(require_admin)):
+    """Create a new client account (admin only)"""
+    db = get_db()
+    
+    # Check if email already exists
+    existing = await db.users.find_one({"email": request.email})
+    if existing:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    
+    # Create user
+    user_doc = {
+        "name": request.name,
+        "email": request.email,
+        "password_hash": hash_password(request.password),
+        "role": "client",
+        "phone": None,
+        "created_at": datetime.utcnow(),
+        "updated_at": datetime.utcnow()
+    }
+    
+    result = await db.users.insert_one(user_doc)
+    
+    return UserResponse(
+        id=str(result.inserted_id),
+        name=request.name,
+        email=request.email,
+        role="client",
+        phone=None,
+        created_at=user_doc["created_at"]
+    )
+
+@router.delete("/users/{user_id}")
+async def delete_user(user_id: str, admin: dict = Depends(require_admin)):
+    """Delete a user account (admin only)"""
+    db = get_db()
+    
+    # Check if user exists
+    user = await db.users.find_one({"_id": ObjectId(user_id)})
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    
+    # Prevent deleting yourself
+    if str(user["_id"]) == admin["id"]:
+        raise HTTPException(status_code=400, detail="Cannot delete your own account")
+    
+    # Delete the user
+    await db.users.delete_one({"_id": ObjectId(user_id)})
+    
+    # Also delete related data (optional: intakes, orders, etc.)
+    await db.intakes.delete_many({"user_id": user_id})
+    await db.client_projects.delete_many({"user_id": user_id})
+    
+    return {"message": "User deleted successfully"}
 
 @router.get("/users", response_model=List[UserResponse])
 async def get_users(
