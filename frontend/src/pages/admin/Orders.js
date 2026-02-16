@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { ShoppingCart, Eye, RefreshCw } from 'lucide-react';
+import { createPortal } from 'react-dom';
+import { ShoppingCart, Eye, RefreshCw, X } from 'lucide-react';
 import api from '../../api/client';
 import { toast } from 'sonner';
 
