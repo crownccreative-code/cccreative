@@ -185,6 +185,16 @@ export default function Landing() {
               Inquire
             </a>
 
+            {/* Login Button - Desktop Nav */}
+            <Link 
+              to="/login"
+              className="hidden md:flex items-center gap-2 px-6 py-2.5 border border-white/20 hover:border-blue-500/50 text-white text-[10px] font-bold uppercase tracking-widest transition-colors rounded-sm"
+              data-testid="login-btn"
+            >
+              <LogIn className="w-3 h-3" />
+              Login
+            </Link>
+
             {/* Mobile Menu */}
             <div className="relative" ref={menuRef}>
               <button 
@@ -198,17 +208,26 @@ export default function Landing() {
               {menuOpen && (
                 <div className="absolute top-full right-0 mt-4 w-64 bg-[#0D0D0D] border border-white/10 rounded-2xl shadow-2xl p-4 overflow-hidden animate-fadeIn">
                   <div className="flex flex-col gap-2">
-                    {t.nav.slice(0, 3).map((item, idx) => (
-                      <a 
-                        key={idx} 
-                        href={`#${idx === 0 ? 'start' : idx === 1 ? 'fix' : 'all-in'}`} 
-                        onClick={() => setMenuOpen(false)}
-                        className="flex justify-between items-center px-6 py-4 rounded-xl text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 hover:text-white hover:bg-white/5 transition-colors group"
-                      >
-                        {item}
-                        <ChevronRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </a>
-                    ))}
+                    {/* Inquire Link */}
+                    <a 
+                      href="https://forms.gle/oLKR3vLosFSWkywF9"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setMenuOpen(false)}
+                      className="flex justify-between items-center px-6 py-4 rounded-xl text-[11px] font-bold uppercase tracking-[0.2em] text-[#D4AF37] hover:text-white hover:bg-white/5 transition-colors group"
+                    >
+                      Inquire
+                      <ArrowUpRight className="w-3 h-3" />
+                    </a>
+                    {/* Client Portal Link */}
+                    <Link 
+                      to="/login"
+                      onClick={() => setMenuOpen(false)}
+                      className="flex justify-between items-center px-6 py-4 rounded-xl text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 hover:text-white hover:bg-white/5 transition-colors group"
+                    >
+                      Client Portal
+                      <ChevronRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </Link>
                   </div>
                 </div>
               )}
