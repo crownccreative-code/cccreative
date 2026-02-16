@@ -183,13 +183,14 @@ export default function AdminPortfolio() {
             <div
               key={item.id}
               className="relative group"
+              style={{ position: 'relative' }}
               data-testid={`portfolio-item-${item.id}`}
             >
               {/* Delete Button - Positioned at top-right corner */}
               <button
                 onClick={(e) => { e.stopPropagation(); handleDelete(item.id); }}
-                className="absolute -top-2 -right-2 p-2.5 bg-red-600 hover:bg-red-500 rounded-full text-white transition-all shadow-xl hover:scale-110 border-2 border-[#050505]"
-                style={{ zIndex: 50 }}
+                className="p-2.5 bg-red-600 hover:bg-red-500 rounded-full text-white transition-all shadow-xl hover:scale-110 border-2 border-[#050505]"
+                style={{ position: 'absolute', top: '-8px', right: '-8px', zIndex: 50 }}
                 data-testid={`delete-portfolio-${item.id}`}
                 title="Delete item"
               >
