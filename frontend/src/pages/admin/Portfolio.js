@@ -203,16 +203,15 @@ export default function AdminPortfolio() {
                 />
               )}
               
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-                <button
-                  onClick={() => handleDelete(item.id)}
-                  className="p-3 bg-red-500/20 rounded-full text-red-400 hover:bg-red-500/40 transition-colors"
-                  data-testid={`delete-portfolio-${item.id}`}
-                >
-                  <Trash2 className="w-5 h-5" />
-                </button>
-              </div>
+              {/* Delete Button - Always visible in top right */}
+              <button
+                onClick={() => handleDelete(item.id)}
+                className="absolute top-2 right-2 p-2 bg-red-500/80 hover:bg-red-500 rounded-lg text-white transition-colors shadow-lg z-10"
+                data-testid={`delete-portfolio-${item.id}`}
+                title="Delete item"
+              >
+                <Trash2 className="w-4 h-4" />
+              </button>
 
               {/* Type Badge */}
               <div className="absolute top-2 left-2">
