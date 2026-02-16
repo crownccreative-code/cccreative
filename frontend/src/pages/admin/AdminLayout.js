@@ -10,7 +10,8 @@ import {
   Users, 
   LogOut,
   ChevronRight,
-  Home
+  Home,
+  Settings
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -21,6 +22,7 @@ const navItems = [
   { path: '/admin/intakes', icon: FileText, label: 'Intakes' },
   { path: '/admin/portfolio', icon: Image, label: 'Portfolio' },
   { path: '/admin/users', icon: Users, label: 'Users' },
+  { path: '/admin/settings', icon: Settings, label: 'Settings' },
 ];
 
 export default function AdminLayout() {
