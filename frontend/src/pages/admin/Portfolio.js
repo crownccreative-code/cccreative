@@ -182,10 +182,21 @@ export default function AdminPortfolio() {
           {items.map((item, idx) => (
             <div
               key={item.id}
-              className="relative"
+              className="relative group"
               data-testid={`portfolio-item-${item.id}`}
             >
-              <div className="card group aspect-square overflow-hidden relative">
+              {/* Delete Button - Positioned outside the card, at top-right */}
+              <button
+                onClick={(e) => { e.stopPropagation(); handleDelete(item.id); }}
+                className="absolute top-2 right-2 p-2 bg-red-600 hover:bg-red-500 rounded-full text-white transition-all shadow-xl hover:scale-110"
+                style={{ zIndex: 50 }}
+                data-testid={`delete-portfolio-${item.id}`}
+                title="Delete item"
+              >
+                <Trash2 className="w-4 h-4" />
+              </button>
+
+              <div className="bg-[#0A0A0A] border border-white/5 rounded-xl aspect-square overflow-hidden relative hover:border-blue-500/20 transition-colors">
                 {item.mime_type?.startsWith('video/') ? (
                   <video
                     src={item.url}
@@ -216,17 +227,6 @@ export default function AdminPortfolio() {
                     </span>
                   )}
                 </div>
-
-                {/* Delete Button - Top right inside card */}
-                <button
-                  onClick={(e) => { e.stopPropagation(); handleDelete(item.id); }}
-                  className="absolute top-3 right-3 p-2 bg-red-600 hover:bg-red-500 rounded-full text-white transition-all shadow-xl hover:scale-110"
-                  style={{ zIndex: 20 }}
-                  data-testid={`delete-portfolio-${item.id}`}
-                  title="Delete item"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
 
                 {/* Info */}
                 <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
