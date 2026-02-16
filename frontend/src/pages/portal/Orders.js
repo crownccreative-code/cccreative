@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link, useNavigate } from 'react-router-dom';
-import { Plus, ShoppingCart, ArrowRight, Trash2, CreditCard } from 'lucide-react';
+import { Plus, ShoppingCart, ArrowRight, X, CreditCard } from 'lucide-react';
 import api from '../../api/client';
 import { toast } from 'sonner';
 
